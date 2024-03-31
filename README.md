@@ -38,7 +38,7 @@ repository, which provided insights and inspiration for this project.
 
 ## License
 
-This project is licensed under the MIT license. See the [LICENSE] file for details.
+This project is licensed under the MIT license. See the [LICENSE](MIT-LICENSE.txt) file for details.
 
 ## Support
 
