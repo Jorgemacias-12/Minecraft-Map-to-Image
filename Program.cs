@@ -1,3 +1,6 @@
+using Minecraft_Map_To_Image.src.views;
+using System.Reflection;
+
 namespace Minecraft_Map_To_Image
 {
     internal static class Program
@@ -11,7 +14,12 @@ namespace Minecraft_Map_To_Image
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+
+            SplashScreen scr = new();
+
+            scr.Show();
+
+            Application.Run();
         }
     }
 }
