@@ -16,6 +16,7 @@ namespace Minecraft_Map_To_Image.src.views
     /// <summary>
     /// Base class for custom forms with drag-to-move and resize functionality.
     /// </summary>
+    [SupportedOSPlatform("windows")]
     public partial class BaseForm : Form
     {
         // More info about this values in:
@@ -40,7 +41,6 @@ namespace Minecraft_Map_To_Image.src.views
         /// <summary>
         /// Configures the form to have borderless appearance and be resizable.
         /// </summary>
-        [SupportedOSPlatform("windows")]
         private void ConfigureForm()
         {
 
@@ -83,7 +83,6 @@ namespace Minecraft_Map_To_Image.src.views
         /// Overrides the WndProc method to implement drag and resize functionality.
         /// </summary>
         /// <param name="m">Window message</param>
-        [SupportedOSPlatform("windows")]
         protected override void WndProc(ref Message m)
         {
             base.WndProc(ref m);
@@ -113,7 +112,6 @@ namespace Minecraft_Map_To_Image.src.views
         /// Overrides the OnPaint method to draw the resize area at the bottom-right corner.
         /// </summary>
         /// <param name="e">Paint event arguments</param>
-        [SupportedOSPlatform("windows")]
         protected override void OnPaint(PaintEventArgs e)
         {
             Rectangle GripRect = new Rectangle()
@@ -127,19 +125,16 @@ namespace Minecraft_Map_To_Image.src.views
             ControlPaint.DrawSizeGrip(e.Graphics, BackColor, GripRect);
         }
 
-        [SupportedOSPlatform("windows")]
         private void Btn_Exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        [SupportedOSPlatform("windows")]
         private void Btn_ChangeFormState_Click(object sender, EventArgs e)
         {
             WindowState = WindowState == FormWindowState.Normal ? FormWindowState.Maximized : FormWindowState.Normal;
         }
 
-        [SupportedOSPlatform("windows")]
         private void Btn_Minimize_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
@@ -150,7 +145,6 @@ namespace Minecraft_Map_To_Image.src.views
         /// </summary>
         /// <param name="sender">Control that generates the event</param>
         /// <param name="e">MouseDown event arguments</param>
-        [SupportedOSPlatform("windows")]
         private void BaseForm_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
