@@ -1,0 +1,158 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Minecraft_Map_To_Image.src.logic.helpers
+{
+    /// <summary>
+    /// Helper class for mapping Minecraft block IDs to colors.
+    /// </summary>
+    public class MinecraftDataHelper
+    {
+        private static Dictionary<int, Color> ColorDictionary = new Dictionary<int, Color>()
+        {
+            {4, Color.FromArgb(89, 125, 39)},
+            {5, Color.FromArgb(109, 153, 48)},
+            {6, Color.FromArgb(127, 178, 56)},
+            {7, Color.FromArgb(67, 94, 29)},
+            {8, Color.FromArgb(174, 164, 115)},
+            {9, Color.FromArgb(213, 201, 140)},
+            {10, Color.FromArgb(247, 233, 163)},
+            {11, Color.FromArgb(130, 123, 86)},
+            {12, Color.FromArgb(140, 140, 140)},
+            {13, Color.FromArgb(171, 171, 171)},
+            {14, Color.FromArgb(199, 199, 199)},
+            {15, Color.FromArgb(105, 105, 105)},
+            {16, Color.FromArgb(180, 0, 0)},
+            {17, Color.FromArgb(220, 0, 0)},
+            {18, Color.FromArgb(255, 0, 0)},
+            {19, Color.FromArgb(135, 0, 0)},
+            {20, Color.FromArgb(112, 112, 180)},
+            {21, Color.FromArgb(138, 138, 220)},
+            {22, Color.FromArgb(160, 160, 255)},
+            {23, Color.FromArgb(84, 84, 135)},
+            {24, Color.FromArgb(117, 117, 117)},
+            {25, Color.FromArgb(144, 144, 144)},
+            {26, Color.FromArgb(167, 167, 167)},
+            {27, Color.FromArgb(88, 88, 88)},
+            {28, Color.FromArgb(0, 87, 0)},
+            {29, Color.FromArgb(0, 106, 0)},
+            {30, Color.FromArgb(0, 124, 0)},
+            {31, Color.FromArgb(0, 65, 0)},
+            {32, Color.FromArgb(180, 180, 180)},
+            {33, Color.FromArgb(220, 220, 220)},
+            {34, Color.FromArgb(255, 255, 255)},
+            {35, Color.FromArgb(135, 135, 135)},
+            {36, Color.FromArgb(115, 118, 129)},
+            {37, Color.FromArgb(141, 144, 158)},
+            {38, Color.FromArgb(164, 168, 184)},
+            {39, Color.FromArgb(86, 88, 97)},
+            {40, Color.FromArgb(106, 76, 54)},
+            {41, Color.FromArgb(130, 94, 66)},
+            {42, Color.FromArgb(151, 109, 77)},
+            {43, Color.FromArgb(79, 57, 40)},
+            {44, Color.FromArgb(79, 79, 79)},
+            {45, Color.FromArgb(96, 96, 96)},
+            {46, Color.FromArgb(112, 112, 112)},
+            {47, Color.FromArgb(59, 59, 59)},
+            {48, Color.FromArgb(45, 45, 180)},
+            {49, Color.FromArgb(55, 55, 220)},
+            {50, Color.FromArgb(64, 64, 255)},
+            {51, Color.FromArgb(33, 33, 135)},
+            {52, Color.FromArgb(100, 84, 50)},
+            {53, Color.FromArgb(123, 102, 62)},
+            {54, Color.FromArgb(143, 119, 72)},
+            {55, Color.FromArgb(75, 63, 38)},
+            {56, Color.FromArgb(180, 177, 172)},
+            {57, Color.FromArgb(220, 217, 211)},
+            {58, Color.FromArgb(255, 252, 245)},
+            {59, Color.FromArgb(135, 133, 129)},
+            {60, Color.FromArgb(152, 89, 36)},
+            {61, Color.FromArgb(186, 109, 44)},
+            {62, Color.FromArgb(216, 127, 51)},
+            {63, Color.FromArgb(114, 67, 27)},
+            {64, Color.FromArgb(125, 53, 152)},
+            {65, Color.FromArgb(153, 65, 186)},
+            {66, Color.FromArgb(178, 76, 216)},
+            {67, Color.FromArgb(94, 40, 114)},
+            {68, Color.FromArgb(72, 108, 152)},
+            {69, Color.FromArgb(88, 132, 186)},
+            {70, Color.FromArgb(102, 153, 216)},
+            {71, Color.FromArgb(54, 81, 114)},
+            {72, Color.FromArgb(161, 161, 36)},
+            {73, Color.FromArgb(197, 197, 44)},
+            {74, Color.FromArgb(229, 229, 51)},
+            {75, Color.FromArgb(121, 121, 27)},
+            {76, Color.FromArgb(89, 144, 17)},
+            {77, Color.FromArgb(109, 176, 21)},
+            {78, Color.FromArgb(127, 204, 25)},
+            {79, Color.FromArgb(67, 108, 13)},
+            {80, Color.FromArgb(170, 89, 116)},
+            {81, Color.FromArgb(208, 109, 142)},
+            {82, Color.FromArgb(242, 127, 165)},
+            {83, Color.FromArgb(128, 67, 87)},
+            {84, Color.FromArgb(53, 53, 53)},
+            {85, Color.FromArgb(65, 65, 65)},
+            {86, Color.FromArgb(76, 76, 76)},
+            {87, Color.FromArgb(40, 40, 40)},
+            {88, Color.FromArgb(108, 108, 108)},
+            {89, Color.FromArgb(132, 132, 130)},
+            {90, Color.FromArgb(153, 153, 153)},
+            {91, Color.FromArgb(81, 81, 80)},
+            {92, Color.FromArgb(53, 89, 108)},
+            {93, Color.FromArgb(65, 109, 132)},
+            {94, Color.FromArgb(76, 127, 153)},
+            {95, Color.FromArgb(40, 67, 81)},
+            {96, Color.FromArgb(89, 44, 125)},
+            {97, Color.FromArgb(109, 54, 153)},
+            {98, Color.FromArgb(127, 63, 178)},
+            {99, Color.FromArgb(67, 33, 94)},
+            {100, Color.FromArgb(36, 53, 125)},
+            {101, Color.FromArgb(44, 65, 153)},
+            {102, Color.FromArgb(51, 76, 178)},
+            {103, Color.FromArgb(27, 40, 94)},
+            {104, Color.FromArgb(72, 53, 36)},
+            {105, Color.FromArgb(88, 65, 44)},
+            {106, Color.FromArgb(102, 76, 51)},
+            {107, Color.FromArgb(54, 40, 27)},
+            {108, Color.FromArgb(72, 89, 36)},
+            {109, Color.FromArgb(88, 109, 44)},
+            {110, Color.FromArgb(102, 127, 51)},
+            {111, Color.FromArgb(54, 67, 27)},
+            {112, Color.FromArgb(108, 36, 36)},
+            {113, Color.FromArgb(132, 44, 44)},
+            {114, Color.FromArgb(153, 51, 51)},
+            {115, Color.FromArgb(81, 27, 27)},
+            {116, Color.FromArgb(17, 17, 17)},
+            {136, Color.FromArgb(91, 60, 34)},
+            {137, Color.FromArgb(111, 74, 42)},
+            {138, Color.FromArgb(129, 86, 49)},
+            {139, Color.FromArgb(68, 45, 25)},
+            {140, Color.FromArgb(79, 1, 0)},
+            {141, Color.FromArgb(96, 1, 0)},
+            {142, Color.FromArgb(112, 2, 0)},
+            {143, Color.FromArgb(59, 1, 0)},
+            {144, Color.FromArgb(147, 124, 113)},
+            {145, Color.FromArgb(180, 152, 138)},
+            {146, Color.FromArgb(209, 177, 161)},
+            {147, Color.FromArgb(110, 93, 85)},
+            {148, Color.FromArgb(112, 57, 25)},
+            {149, Color.FromArgb(137, 70, 31)},
+            {150, Color.FromArgb(159, 82, 36)},
+            {151, Color.FromArgb(84, 43, 19)}
+        };
+
+        /// <summary>
+        /// Gets the dictionary of Minecraft block IDs to colors.
+        /// </summary>
+        public static Dictionary<int, Color> BlocksColorsMappings
+        {
+            get
+            {
+                return ColorDictionary;
+            }
+        }
+    }
+}
